@@ -1,0 +1,23 @@
+const express = require("express");
+let app = express();
+
+
+
+app.use(express.static("views"));
+app.use(express.static("views/layouts"));
+
+
+const hds=require("express-handlebars");
+
+app.engine("handlebars",hds({ defaultLayout:"main"}));
+app.set("view engine","handlebars");
+app.get('/',function(req,res){
+    res.render("answer",{
+        title:Math.floor(Math.random()*100)+ "=" + Math.floor(Math.random()*100),
+    });
+});
+
+app.listen(6969, function (err) {
+    if (err) console.error(err);
+    else console.log("sever ");
+});

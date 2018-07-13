@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/answer.css">
+</head>
+<body>
+    <nav class="question">
+        <span>{{question.content}}</span>
+    </nav>
+    <nav class="answer">
+        <a href="/traloi/{{question.id}}/no"><span class="yes">Sai/Khong/Trai</span></a>
+        <a href="traloi/{{question.id}}/yes"><span class="no">Dung/Co/Phai</span></a>
+    </nav>
+    <nav class="luachon">
+        <a href="ketquavote/{{question.id}}"><span class="ketqua">ket qua vote</span></a>
+        <a href="/"><span class="cauhoikhac">cau hoi khac</span></a>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,49 @@
+.question{
+    font-size: 30px;
+    text-align: center;
+    margin-top: 200px;
+}
+.answer{
+    text-align: center;
+}
+
+.answer span{
+    display: inline-block;
+    background-color: rgb(223, 20, 20);
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    color: aliceblue;
+    font-size: 20px;
+    line-height: 50px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+.yes{
+    margin-right: 100px;
+    
+}
+.no{
+    margin-left: 100px;
+    }
+.luachon{
+    text-align: center;
+    
+
+}
+.answer span:hover{
+    background-color: rgb(145, 33, 33);
+}
+.luachon span{
+
+    display: inline-block;
+    background-color: aquamarine;
+    margin-top: 30px;
+    height: 20px;
+    width: 100px;
+    cursor: pointer;
+    color: black;
+}
+.luachon span:hover{
+    background-color: rgb(22, 150, 150);
+}

@@ -1,0 +1,40 @@
+#Quyet{
+    font-size: 30px;
+    width :140px;
+}
+.header{
+    display: inline-block;
+    height: 100%;
+    width: 100px;
+    text-align: center;
+    line-height: 45px;
+    color: aliceblue;
+}
+
+.mainnav{
+    margin-top:-8px;
+    margin-left: -8px;
+    margin-right: -8px;
+    height: 50px;
+    background-color: rgb(12, 12, 65);
+    color: aliceblue;
+
+}
+footer{
+    margin-top:-8px;
+    margin-left: -8px;
+    margin-right: -8px;
+    height: 50px;
+    background-color: rgb(12, 12, 65);
+    color: aliceblue;
+    text-align: center;
+    line-height: 50px;
+}
+footer{
+    position: relative;
+    top:463px;
+}
+.header:hover{
+    cursor: pointer;
+    background-color: rgb(8, 8, 36);
+}
