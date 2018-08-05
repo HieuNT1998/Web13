@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <nav>{{player.User1}}{{player.User2}}{{player.User3}}{{player.User4}}</nav>
+    <nav> Sum of Score <span id="SumUser1">0</span>  <span id="SumUser2">0</span>  <span id="SumUser3">0</span> <span id="SumUser4">0</span></nav>
+    <div id="AddDiem"></div>
+    <input type="button" value="AddRound" id="AddRound">
+   
+    <script>
+        var i = 1;
+        $('#AddRound').on('click',()=>{
+            $("#AddDiem").append(`
+            Round ${i}: <textarea name="user1" id="user1Round${i}" class="user1" cols="1" rows="1" ></textarea>
+            <textarea name="user1" id="user2Round${i}" class="user2"  cols="1" rows="1"></textarea>
+            <textarea name="user1" id="user3Round${i}" class="user3" cols="1" rows="1"></textarea>
+            <textarea name="user1" id="user4Round${i}" class="user4" cols="1" rows="1"></textarea><br>
+            `)
+            i++;
+        })
+        var debouce;
+        
+        $(document).on('input', '.user1' ,()=>{
+            clearTimeout(debouce);
+            debouce = setTimeout(function(){
+                let a1 = $("#SumUser1").text();
+                let b1 = $('#user1Round'+(i-1)) .val();
+                
+                let Sum1 = parseInt(a1) + parseInt(b1);
+                
+                    $("#SumUser1").text(Sum1);
+                
+            },1000);
+        })
+        $(document).on('input', '.user2' ,()=>{
+           
+            clearTimeout(debouce);
+            debouce = setTimeout(function(){
+                let a2 = $("#SumUser2").text();
+                let b2 = $('#user2Round'+(i-1)) .val();
+                
+                let Sum2 = parseInt(a2) + parseInt(b2);
+            
+            $("#SumUser2").text(Sum2);    
+                
+            },1000);
+
+                
+        })
+        
+        $(document).on('input', '.user4' ,()=>{
+           
+             
+            clearTimeout(debouce);
+            debouce = setTimeout(function(){
+                var a3 = $("#SumUser4").text();
+                var b3 = $('#user4Round'+(i-1)) .val();
+             var Sum3 = parseInt(a3) + parseInt(b3);
+            $("#SumUser4").text(Sum3);    
+                
+            },1000);
+
+               
+
+               
+        })
+        
+        $(document).on('input', '.user3' ,()=>{
+           
+            clearTimeout(debouce);
+            debouce = setTimeout(function(){
+               
+                var a4 = $("#SumUser3").text();
+                var b4 = $('#user3Round'+(i-1)) .val();
+             var Sum4 = parseInt(a4) + parseInt(b4);
+            $("#SumUser3").text(Sum4);
+ 
+            },1000);
+         })
+        
+        
+        
+
+    </script>
+</body>
+</html>
