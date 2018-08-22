@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        #InputForm input{
+            width: 60%;
+            height: 25px;
+            margin-left: 20%;
+            margin-right: 20%;
+            margin-bottom: 15px;
+            border: 1px solid #BF1363;
+            border-radius: 5px;
+            background-color: #FBFEF9;
+            color: #333333;
+            
+            padding-left: 10px;
+        }
+        #InputForm button {
+            margin-left: 40%;
+            margin-right: 40%;
+            background-color:#BF1363;
+            text-align: center
+            border: 1px solid #BF1363;
+            border-radius: 5px;
+            width: 20%;
+            height: 40px;
+            color: white;
+            cursor: pointer
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action="/play" method="POST" id="InputForm">
+        
+        <input type="text" id="player1" name="player1" placeholder="Player1...">
+        <br>
+        <input type="text" id="player2" name="player2" placeholder="Player2...">
+        <br> 
+        <input type="text" id="player3" name="player3" placeholder="Player3...">
+        <br> 
+        <input type="text" id="player4" name="player4" placeholder="Player4...">
+        <br>
+        <button type="submit" class="btn">CREATE NEW GAME</button>
+    </form>
+    </div>
+</body>
+
+</html> 
