@@ -9,9 +9,59 @@
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
         crossorigin="anonymous"></script>
-    <style>
+     <style>
         #GameId {
             display: none;
+        }
+        * {
+            background-color:white;
+        }
+        #AddRound {
+            margin-left: 40%;
+            margin-right: 40%;
+            background-color:#BF1363;
+            text-align: center
+            border: 1px solid #BF1363;
+            border-radius: 5px;
+            width: 20%;
+            height: 40px;
+            color: white;
+            cursor: pointer
+        }
+        table {
+            width: 80%;
+            margin: 0 auto;
+        }
+        #name * {
+            width: 17%;
+            height: 30px;
+            font-size: 20px;
+            line-height: 10px;
+            text-align: left;
+            color: #BF1363;
+        }
+
+        #sum *{
+            background-color: #BF1363;
+            color: white;
+            text-align: left;
+            line-height: 30px;
+            border: 1px solid 
+        }
+        #score input{
+            line-height: 30px;
+            width: 100%;
+            border: 1px solid #BF1363;
+            border-radius: 5px;
+            margin-left: 0%; 
+        }
+         #score td {
+            width: 20%;
+            
+        } 
+        .round{
+            background-color: #BF1363;
+            color: aliceblue;
         }
     </style>
     <title>Document</title>
@@ -19,43 +69,67 @@
 
 <body>
     <script>
+        var i = 1;
         $(document).ready(function () {
-            
-                $("#AddDiem").append(`
-            Round ${0}: <input type="number" name="user1" id="user1Round${0}" class="user1" value="" >
-            <input type="number" name="user1" id="user2Round${0}" class="user2" >
-            <input type="number" name="user1" id="user3Round${0}" class="user3" >
-            <input type="number" name="user1" id="user4Round${0}" class="user4" ><br>
-            `)
-           
+            var GameID = $('#GameId').text();
+            console.log("Gui");
+            $.ajax({
+                url: '/GetUser/' + GameID,
+                type: 'GET',
+                success: function (Game) {
+                    console.log(Game.Game.GradeofUser1.length);
+                    console.log(Game.Game.GradeofUser1);
+                    for (i; i <= Game.Game.GradeofUser1.length; i++) {
+                        $("#AddDiem").append(`<tr id="score">
+                        <td class="round"> Round ${i}:</td> <td> <input type="number" name="user1" id="user1Round${i}" class="user1"  value="${Game.Game.GradeofUser1[i - 1]}"></td>
+                        <td ><input type="number" name="user1" id="user2Round${i}" class="user2" value="${Game.Game.GradeofUser2[i - 1]}" ></td>
+                        <td ><input type="number" name="user1" id="user3Round${i}" class="user3" value="${Game.Game.GradeofUser3[i - 1]}"></td>
+                        <td ><input type="number" name="user1" id="user4Round${i}" class="user4" value="${Game.Game.GradeofUser4[i - 1]}"></td>
+                        `)
+                    }
+                }
+            })
         });
     </script>
+    {{!-- aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa --}}
     <span id="GameId">{{player._id}}</span>
-    <nav>{{player.NameUser1}}{{player.NameUser2}}{{player.NameUser3}}{{player.NameUser4}}</nav>
-    <nav> Sum of Score
-        <span id="SumUser1">0</span>
-        <span id="SumUser2">0</span>
-        <span id="SumUser3">0</span>
-        <span id="SumUser4">0</span>
+    <table id="AddDiem">
+        <tr id="name">
+            <th></th>
+            <th>{{player.NameUser1}}</th>
+            <th>{{player.NameUser2}}</th>
+            <th>{{player.NameUser3}}</th>
+            <th>{{player.NameUser4}}</th>
+        </tr>
+        <tr id="sum">
+            <td>Sum of Score</td>
+            <td id="SumUser1">{{player.SumUser1}}</td>
+            <td id="SumUser2">{{player.SumUser2}}</td>
+            <td id="SumUser3">{{player.SumUser3}}</td>
+            <td id="SumUser4">{{player.SumUser4}}</td>
+        </tr>
+    </table>
+    <nav></nav>
+    <nav> 
+        <span ></span>
+        <span></span>
+        <span></span>
+        <span></span>
     </nav>
-    <div id="AddDiem"></div>
+    {{!-- <div id="AddDiem"></div> --}}
     <input type="button" value="AddRound" id="AddRound">
-
+    {{!--aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa --}}
     <script>
-        var i = 1;
         $('#AddRound').on('click', () => {
-            $("#AddDiem").append(`
-            Round ${i}: <input type="number" name="user1" id="user1Round${i}" class="user1" value="" >
-            <input type="number" name="user1" id="user2Round${i}" class="user2" >
-            <input type="number" name="user1" id="user3Round${i}" class="user3" >
-            <input type="number" name="user1" id="user4Round${i}" class="user4" ><br>
+            $("#AddDiem").append(`<tr id="score">
+            <td class="round"> Round ${i}:</td> <td> <input type="number" name="user1" id="user1Round${i}" class="user1"></td>
+            <td "><input type="number" name="user1" id="user2Round${i}" class="user2" ></td>
+            <td "><input type="number" name="user1" id="user3Round${i}" class="user3" ></td>
+            <td "><input type="number" name="user1" id="user4Round${i}" class="user4" ></td>
             `)
             i++;
         })
         var debouce;
-        $(document).on('click', '#AddRound',()=>{
-            $('#user1Round0').val(3);
-        })
         var GameID = $('#GameId').text();
         $(document).on('input', '.user1', () => {
             clearTimeout(debouce);
@@ -70,16 +144,20 @@
                         arr[j - 1] = a;
                     }
                 }
+                $("#SumUser1").text(Sum1);
                 $.ajax({
                     url: '/AddRound/' + GameID + '/User1',
                     type: 'POST',
                     contentType: "application/json",
-                    data: JSON.stringify({ arr }),
+                    data: JSON.stringify({
+                        arr,
+                        sum: $("#SumUser1").text()
+                    }),
                     success: function (body) {
                         console.log(body)
                     }
                 })
-                $("#SumUser1").text(Sum1);
+
             }, 1000);
         })
         $(document).on('input', '.user2', () => {
@@ -95,16 +173,20 @@
                         arr[j - 1] = a;
                     }
                 }
+                $("#SumUser2").text(Sum1);
                 $.ajax({
                     url: '/AddRound/' + GameID + '/User2',
                     type: 'POST',
                     contentType: "application/json",
-                    data: JSON.stringify({ arr }),
+                    data: JSON.stringify({
+                        arr,
+                        sum: $("#SumUser2").text()
+                    }),
                     success: function (body) {
                         console.log(body)
                     }
                 })
-                $("#SumUser2").text(Sum1);
+
             }, 1000);
 
         })
@@ -121,16 +203,20 @@
                         arr[j - 1] = a;
                     }
                 }
+                $("#SumUser4").text(Sum1);
                 $.ajax({
                     url: '/AddRound/' + GameID + '/User4',
                     type: 'POST',
                     contentType: "application/json",
-                    data: JSON.stringify({ arr }),
+                    data: JSON.stringify({
+                        arr,
+                        sum: $("#SumUser4").text()
+                    }),
                     success: function (body) {
                         console.log(body)
                     }
                 })
-                $("#SumUser4").text(Sum1);
+
             }, 1000);
 
         })
@@ -147,20 +233,31 @@
                         arr[j - 1] = a;
                     }
                 }
+                $("#SumUser3").text(Sum1);
                 $.ajax({
                     url: '/AddRound/' + GameID + '/User3',
                     type: 'POST',
                     contentType: "application/json",
-                    data: JSON.stringify({ arr }),
+                    data: JSON.stringify({
+                        arr,
+                        sum: $("#SumUser3").text()
+                    }),
                     success: function (body) {
                         console.log(body)
                     }
                 })
-                $("#SumUser3").text(Sum1);
+
             }, 1000);
 
         })
     </script>
+
+
+        
+
+        
+       
 </body>
+
 
 </html>

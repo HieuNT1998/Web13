@@ -10,30 +10,88 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
         crossorigin="anonymous"></script>
     <title>Document</title>
+    <style>
+
+        #FormSigin table{
+            
+            width: 80%;
+            margin: 15px auto;
+        
+        }
+
+        .name{
+            width: 20%;
+            color: #BF1363;
+            padding-bottom: 2%; 
+            text-align: right;
+        }
+       
+        #FormSigin table tr td input {
+            width: 90%;
+            height: 25px;
+            margin-left: 5%;
+            
+            margin-bottom: 15px;
+            border: 1px solid #BF1363;
+            border-radius: 5px;
+            background-color: #FBFEF9;
+            color: #333333;
+            padding-left: 10px;
+        }   
+
+        #FormSigin #TaoVan {
+            margin-left: 40%;
+            margin-right: 40%;
+            background-color: #BF1363;
+            text-align: center border: 1px solid #BF1363;
+            border-radius: 5px;
+            width: 20%;
+            height: 40px;
+            color: white;
+            cursor: pointer
+        }
+    </style>
 </head>
 
 <body>
     <form action="/play" method="POST" id="FormSigin">
-        Nguoi Choi 1:
-        <input type="text" id="player1" name="player1">
-        <br> Nguoi Choi 2:
-        <input type="text" id="player2" name="player2">
-        <br> Nguoi Choi 3:
-        <input type="text" id="player3" name="player3">
-        <br> Nguoi Choi 4:
-        <input type="text" id="player4" name="player4">
-        <br>
+        <table>
+            <tr>
+                <td class="name"> Nguoi Choi 1:</td>
+                <td>
+                    <input type="text" id="player1" name="player1"> </td>
+
+            </tr>
+            <tr>
+                <td class="name"> Nguoi Choi 2: </td>
+                <td>
+                    <input type="text" id="player2" name="player2"> </td>
+            </tr>
+            <tr>
+                <td class="name"> Nguoi Choi 3: </td>
+                <td>
+                    <input type="text" id="player3" name="player3"> </td>
+            </tr>
+            <tr>
+                <td class="name">Nguoi Choi 4:</td>
+                <td>
+                    <input type="text" id="player4" name="player4">
+                </td>
+            </tr>
+            
+        </table>
         <input id="TaoVan" type="submit" value="Create New Game">
     </form>
-    {{!-- <script>
+    {{!--
+    <script>
         $('#TaoVan').on("click", () => {
             $.ajax({
                 url: '/play',
                 type: 'POST',
                 data: $("#FormSigin").serialize(),
-                success: function(body){
-                    
-                }           
+                success: function (body) {
+
+                }
             })
         })
     </script> --}}
